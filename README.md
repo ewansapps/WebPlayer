@@ -10,8 +10,8 @@
   
 # Build
 `
-  npm install
-  npm run electron:build
+npm install
+npm run electron:build
 `
 
 # Why was this player created ?

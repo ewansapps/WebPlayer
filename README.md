@@ -10,7 +10,7 @@
   
 # Build
 `
-npm install
+npm install \
 npm run electron:build
 `
 

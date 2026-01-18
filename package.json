@@ -1,0 +1,66 @@
+{
+  "name": "webplayer",
+  "private": true,
+  "version": "0.5.2",
+  "main": "electron/dist/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "tsx server/index.ts",
+    "start:all": "concurrently \"npm run server\" \"npm run dev\"",
+    "build": "vite build",
+    "electron:build": "npm run build && tsc -p electron/tsconfig.json && echo '{\"type\": \"commonjs\"}' > electron/dist/package.json && electron-builder",
+    "electron:build:win": "npm run build && tsc -p electron/tsconfig.json && echo '{\"type\": \"commonjs\"}' > electron/dist/package.json && electron-builder --win",
+    "electron:start": "cross-env ELECTRON_START_URL=http://localhost:3000 electron .",
+    "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"wait-on http://localhost:3000 && tsc -p electron/tsconfig.json && echo '{\\\"type\\\": \\\"commonjs\\\"}' > electron/dist/package.json && electron .\""
+  },
+  "build": {
+    "appId": "com.ewansapps.webplayer",
+    "productName": "WebPlayer",
+    "files": [
+      "dist/**/*",
+      "electron/dist/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png",
+      "category": "Audio"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "asarUnpack": [
+      "**/node_modules/sqlite3/**/*"
+    ]
+  },
+  "dependencies": {
+    "@google/genai": "^1.30.0",
+    "buffer": "6.0.3",
+    "cors": "^2.8.5",
+    "electron-is-dev": "^3.0.1",
+    "express": "^5.2.1",
+    "lucide-react": "^0.554.0",
+    "music-metadata": "10.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "tsx": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.14.0",
+    "@types/sqlite3": "^3.1.11",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "wait-on": "^9.0.3"
+  }
+}

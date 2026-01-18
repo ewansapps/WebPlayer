@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebPlayer</title>
+    <script>
+      // Polyfill global and process for libraries like music-metadata that rely on them
+      window.global = window;
+      window.process = window.process || { env: { NODE_DEBUG: undefined }, version: '' };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #09090b; /* zinc-950 */
+        color: #e4e4e7; /* zinc-200 */
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #18181b; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #3f3f46; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #52525b; 
+      }
+      /* Animation for playing bars */
+      @keyframes equalizer {
+        0% { height: 10%; }
+        50% { height: 100%; }
+        100% { height: 10%; }
+      }
+      .equalizer-bar {
+        animation: equalizer 1s infinite ease-in-out;
+      }
+      .equalizer-bar:nth-child(2) { animation-delay: 0.1s; }
+      .equalizer-bar:nth-child(3) { animation-delay: 0.2s; }
+      .equalizer-bar:nth-child(4) { animation-delay: 0.3s; }
+      
+      /* Remove orange/blue focus outlines */
+      *:focus {
+        outline: none !important;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "Webplayer-v0.4",
+  "description": "An elegant web-based music player. Import your own tracks and create playlists.",
+  "requestFramePermissions": []
+}

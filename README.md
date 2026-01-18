@@ -7,6 +7,10 @@
 - Synced lyrics (local or LRCLIB)
 - Playlists creation
 - And more !
+  
+# Build
+  npm install
+  npm run electron:build
 
 # Why was this player created ?
 I would like to create the perfect player for me after tested many music player.
